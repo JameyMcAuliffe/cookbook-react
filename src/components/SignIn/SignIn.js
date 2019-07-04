@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import { SignUpLink } from '../SignUp/SignUp';
-import { FirebaseContext } from '../Firebase/index';
+import { withFirebase } from '../Firebase/index';
 import * as ROUTES from '../../constants/routes';
 
 
@@ -10,9 +11,7 @@ const SignIn = () => {
 	return (
 		<div>
 			<h1>Sign In</h1>
-			<FirebaseContext.Consumer>
-				{firebase => <SignInFormWithRouter firebase={firebase}/>}
-			</FirebaseContext.Consumer>
+			<SignInForm/>
 			<SignUpLink />
 		</div>
 	);
@@ -24,7 +23,7 @@ const INITIAL_STATE = {
 	error: null
 };
 
-const SignInForm = (props) => {
+const SignInFormBase = (props) => {
 
 	const [userState, setUserState] = useState({...INITIAL_STATE});
 
@@ -75,7 +74,10 @@ const SignInForm = (props) => {
 }
 
 //withRouter is a higher order component that gives access to React Router
-const SignInFormWithRouter = withRouter(SignInForm);
+const SignInForm = compose(
+	withRouter,
+	withFirebase
+)(SignInFormBase)
 
 export default SignIn;
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
-import { FirebaseContext } from '../Firebase/index';
+import { withFirebase } from '../Firebase/index';
 import * as ROUTES from '../../constants/routes';
 
 
@@ -9,14 +10,12 @@ const SignUp = () => {
 	return (
 		<div>
 			<h1>Sign Up</h1>
-			<FirebaseContext.Consumer>
-				{firebase => <SignUpFormWithRouter firebase={firebase}/>}
-			</FirebaseContext.Consumer>
+			<SignUpForm />
 		</div>
 	);
 }
 
-const SignUpForm = (props) => {
+const SignUpFormBase = (props) => {
 
 	const initialState = {
 		email: '',
@@ -96,8 +95,12 @@ const SignUpLink = () => (
 	<p>Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link></p>
 );
 
+//compose nests higher order components 
 //withRouter is a higher order component that gives access to React Router
-const SignUpFormWithRouter = withRouter(SignUpForm);
+const SignUpForm = compose(
+	withRouter,
+	withFirebase,
+)(SignUpFormBase);
 
 export default SignUp;
 
