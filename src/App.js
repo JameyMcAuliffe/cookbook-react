@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 import { withFirebase } from './components/Firebase/index';
+import { AuthUserContext } from './components/Session/index';
+
 import * as ROUTES from './constants/routes';
 import Navigation from './components/Navigation/Navigation';
 import SignUp from './components/SignUp/SignUp';
@@ -13,23 +15,27 @@ import Home from './components/Home/Home';
 const App = (props) => { 
 
   const [authUserState, setAuthUserState] = useState(null);
+  
 
+  //used to conditionally render nav links
   useEffect(() => {
     props.firebase.auth.onAuthStateChanged(authUser => {
       authUser ? setAuthUserState(authUser) : setAuthUserState(null);
     });
-  },[])
+  },[props.firebase.auth]); 
 
   return (
-    <Router>
-      <div className="App">
-        <Navigation authUser={authUserState}/>
-        <hr/>
-        <Route exact path={ROUTES.SIGN_UP} component={SignUp}/>
-        <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
-        <Route exact path={ROUTES.HOME} component={Home}/>
-      </div>
-    </Router>
+    <AuthUserContext.Provider value={authUserState}>
+      <Router>
+        <div className="App">
+          <Navigation/>
+          <hr/>
+          <Route exact path={ROUTES.SIGN_UP} component={SignUp}/>
+          <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
+          <Route exact path={ROUTES.HOME} component={Home}/>
+        </div>
+      </Router>
+    </AuthUserContext.Provider>
   );
 }
 
