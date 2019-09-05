@@ -33,6 +33,13 @@ const SignUpFormBase = (props) => {
 		props.firebase
 			.doCreateUserWithEmailAndPassword(email, passwordOne)
 			.then(authUser => {
+				return props.firebase
+					.user(authUser.user.uid)
+					.set({username, email},
+							 { merge: true }
+					);
+			})
+			.then(() => {
 				setUserState({...initialState});
 				props.history.push(ROUTES.HOME);
 			})
