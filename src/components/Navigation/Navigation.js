@@ -18,7 +18,7 @@ const Navigation = ({authUser}) => (
  	<nav className="navbar navbar-expand navbar-dark bg-primary">
  		<ul className="navbar-nav">
 			<li className="nav-item">
-				<Link to={ROUTES.LANDING} className="nav-link">Home</Link>
+				<Link to={ROUTES.HOME} className="nav-link">Home</Link>
 			</li>
 			<li className="nav-item">
 				<SignOut />

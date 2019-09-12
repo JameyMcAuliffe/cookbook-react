@@ -1,0 +1,27 @@
+.card-div {
+	max-width: 315px;
+	cursor: pointer;
+}
+
+.card-div img {
+	/*opacity: 0.7;*/
+	margin-top: 15px;
+	max-width: 300px;
+	max-height: 300px;
+	z-index: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.card-div:hover img {
+	border: 1px solid black;
+}
+
+.card-div:hover {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+	border: 1px solid black;
+}
+
