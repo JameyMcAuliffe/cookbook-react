@@ -52,22 +52,24 @@ const SignInFormBase = (props) => {
 	const isInvalid = password.trim() === '' || email.trim() === '';
 
 	return (
-		<form onSubmit={onSubmit}>
+		<form onSubmit={onSubmit} className="form-group">
 			<input
+				className="form-control col-sm-6 offset-3 mb-2"
 				name="email"
 				value={email}
 				onChange={onChange}
 				type="text"
-				placeholder="Enter your email address"
+				placeholder="Enter your email address..."
 			/>
 			<input
+				className="form-control col-sm-6 offset-3 mb-2"
 				name="password"
 				value={password}
 				onChange={onChange}
 				type="text"
 				placeholder="Enter your password"
 			/>
-			<button disabled={isInvalid} type="submit">Sign In</button>
+			<button disabled={isInvalid} type="submit" className="btn btn-primary">Sign In</button>
 			{error && <p>{error.message}</p>}
 		</form>
 	);
