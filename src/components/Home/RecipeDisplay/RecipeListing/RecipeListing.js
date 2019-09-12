@@ -1,29 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './RecipeListing.css';
+
 const RecipeListing = (props) => {
-
-	const imageStyling = {
-		width: '300px',
-		height: '300px'
-	}
-
-	const cardStyling = {
-		width: '300px',
-		cursor: 'pointer'
-	}
+	const recipeID = props.id
+	const recipeURL = `/recipe/${recipeID}`;
 
 	return (
-		<div className="card ml-2" style={cardStyling}>
-			<img 
-				src={props.image} alt="turkey sandwich"
-				className="img-thumbnail float-left "
-				style={imageStyling}
-				/>
-			<div className="card-body">
-				<h5 className="card-title">{props.title}</h5>
-			</div>	
-		</div>
+		<Link to={recipeURL}>
+			<div className="card ml-2 col-sm-3 card-div">
+				<img 
+					src={props.image} alt={props.title}
+					className="img-fluid"
+					/>
+				<div className="card-body">
+					<h5 className="card-title">{props.title}</h5>
+				</div>	
+			</div>
+		</Link>
 	);
 }
 
