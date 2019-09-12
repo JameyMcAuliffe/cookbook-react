@@ -4,23 +4,38 @@ import { withAuthorization } from '../Session/index';
 import RecipeListing from './RecipeDisplay/RecipeListing/RecipeListing';
 
 const Home = (props) => {
-	//console.log('au: ', props.firebase.auth.O);
-	let uid = "NZJUSTsBRTZ1KelLnbzhes1kQUZ2";
-	const [recipeThumbnail, setRecipeThumbail] = useState({});
+	//let uid = "NZJUSTsBRTZ1KelLnbzhes1kQUZ2";
+	const uid = props.firebase.auth.O;
+	//const [recipeThumbnail, setRecipeThumbail] = useState({});
+	const [recipesArray, setRecipesArray] = useState([]);
 
 	useEffect(() => {
+		let snapshotArray = [];
+
 		props.firebase.getRecipes(uid)
 		.then(snapshot => {
 			snapshot.docs.forEach(doc => {
-				console.log(doc.data());
-				setRecipeThumbail(doc.data());
-			});
+				//console.log(doc.data());
+				let recipeObj = doc.data();
+				//console.log('ro: ', recipeObj);
+				snapshotArray.push(recipeObj);
+			})
+		})
+		.then(() => {
+			setRecipesArray(snapshotArray);
 		});
 		// eslint-disable-next-line
 	}, []);
+
+	console.log(recipesArray);
+	let renderedRecipes = recipesArray.map((recipe, i) => {
+		return <RecipeListing image={recipe.image} title={recipe.title} key={i}/>
+	});
 	
 	return (
-		<RecipeListing image={recipeThumbnail.image} title={recipeThumbnail.title}/>
+		<div>
+			{renderedRecipes}
+		</div>
 	);
 }
 
