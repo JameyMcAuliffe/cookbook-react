@@ -63,8 +63,9 @@ const SignUpFormBase = (props) => {
 		username.trim() === '';
 
 	return(
-		<form onSubmit={onSubmit}>
+		<form onSubmit={onSubmit} className="form-group">
 			<input
+				className="form-control col-sm-6 offset-3 mb-2"
 				name="username"
 				value={username}
 				onChange={onChange}
@@ -72,6 +73,7 @@ const SignUpFormBase = (props) => {
 				placeholder="What would you like to be called?"
 			/>
 			<input
+				className="form-control col-sm-6 offset-3 mb-2"
 				name="email"
 				value={email}
 				onChange={onChange}
@@ -79,6 +81,7 @@ const SignUpFormBase = (props) => {
 				placeholder="Enter a valid email"
 			/>
 			<input
+				className="form-control col-sm-6 offset-3 mb-2"
 				name="passwordOne"
 				value={passwordOne}
 				onChange={onChange}
@@ -86,13 +89,14 @@ const SignUpFormBase = (props) => {
 				placeholder="Create a password"
 			/>
 			<input
+				className="form-control col-sm-6 offset-3 mb-2"
 				name="passwordTwo"
 				value={passwordTwo}
 				onChange={onChange}
 				type="text"
 				placeholder="Confirm password"
 			/>
-			<button disabled={isInvalid} type="submit">Create Account</button>
+			<button disabled={isInvalid} type="submit" className="btn btn-primary">Create Account</button>
 			{error && <p>{error.message}</p>}
 		</form>
 	)

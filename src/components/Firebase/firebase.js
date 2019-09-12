@@ -40,6 +40,10 @@ class Firebase {
 
   users = () => this.db.collection('users');
 
+  /**** DATABASE API ****/
+  addRecipe = (recipe, uid) => this.db.doc(`users/${uid}`).collection("recipes").add(recipe);
+  getRecipes = (uid) => this.db.doc(`users/${uid}`).collection("recipes").get();
+
 }
 
 export default Firebase;
