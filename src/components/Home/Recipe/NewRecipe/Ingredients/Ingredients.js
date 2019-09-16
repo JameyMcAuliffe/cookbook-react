@@ -1,32 +1,33 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 
-import Ingredient from './Ingredient/Ingredient';
+//import Ingredient from './Ingredient/Ingredient';
 
-const Ingredients = () => {
+const Ingredients = (props) => {
 
-	const [ingredientsArray, setIngredientsArray] = useState([]);
+	// const [ingredientsArray, setIngredientsArray] = useState([]);
 
-	let addIngredient = () => {
-		let updatedIngredientsArray = [...ingredientsArray, <Ingredient />];
-		setIngredientsArray(updatedIngredientsArray);
-	}
+	// let addIngredient = () => {
+	// 	let updatedIngredientsArray = [...ingredientsArray, <Ingredient />];
+	// 	setIngredientsArray(updatedIngredientsArray);
+	// }
 
-	let renderedIngredientInputs = ingredientsArray.map((ingredient, i) => { 
-		return <Ingredient key={i}/>
-	});
+	// let renderedIngredientInputs = props.ingredientInputsArray.map((ingredient, i) => { 
+	// 	return <Ingredient key={i} />
+	// });
 
 	useEffect(() => {
-		console.log('UE: ', renderedIngredientInputs);
-	});
+		//console.log(props.ingredientInputs);
+		//console.log('props: ', props);
+	})
 
 	return (
 		<div>
 			<h5 className="mt-4">Ingredients:</h5>
-			{renderedIngredientInputs}
+			{props.ingredientInputs}
 			<button 
 				type="button" 
 				className="form-group col-sm-4 btn-primary"
-				onClick={addIngredient}>Add Ingredient</button>
+				onClick={props.addNewIngredient}>Add Ingredient</button>
 		</div>
 	);
 }
@@ -45,5 +46,8 @@ export default Ingredients;
 
 	// 	setIngredientsArray([...filteredIngredients]);
 	// }
+
+
+	//index={i} onIngredientChange={props.onIngredientChange} ingValue={props.ingValue}
 
 

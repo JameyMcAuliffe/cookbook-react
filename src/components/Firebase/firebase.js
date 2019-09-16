@@ -46,6 +46,8 @@ class Firebase {
 
   getRecipe = (recipeID, uid) => this.db.doc(`users/${uid}`).collection("recipes").doc(recipeID).get();
 
+  // postNewRecipe = (uid, recipeObj) => this.db.doc(`users/${uid}`).collection("recipes").set(recipeObj);
+
 }
 
 export default Firebase;
