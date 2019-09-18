@@ -35,8 +35,6 @@ const NewRecipe = (props) => {
 			});
 
 		e.preventDefault();
- 
-		//console.log(newRecipeObj);
 	}
 
 	let onChange = (e) => {

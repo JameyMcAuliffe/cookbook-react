@@ -48,11 +48,4 @@ const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(RecipeDetail);
 
-	// {Object.keys(recipeDetails.ingredients).map((ing, i) => {
-	// 			return (
-	// 				<div key={i}>
-	// 					<h5>{ing} - {recipeDetails.ingredients[ing]}</h5> 
-	// 				</div>
-	// 			)
-	// 		})}
 
