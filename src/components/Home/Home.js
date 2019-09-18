@@ -2,11 +2,10 @@ import React, {useState, useEffect} from 'react';
 
 import { withAuthorization } from '../Session/index';
 import RecipeListing from './RecipeDisplay/RecipeListing/RecipeListing';
+import AddNewRecipeListing from './RecipeDisplay/RecipeListing/AddNewRecipeListing';
 
 const Home = (props) => {
-	//let uid = "NZJUSTsBRTZ1KelLnbzhes1kQUZ2";
 	const uid = props.firebase.auth.O;
-	//const [recipeThumbnail, setRecipeThumbail] = useState({});
 	const [recipesArray, setRecipesArray] = useState([]);
 
 	useEffect(() => {
@@ -15,10 +14,8 @@ const Home = (props) => {
 		props.firebase.getRecipes(uid)
 		.then(snapshot => {
 			snapshot.docs.forEach(doc => {
-				//console.log(doc.data());
 				let recipeID = doc.id;
 				let recipeObj = {...doc.data(), recipeID};
-				//console.log('ro: ', recipeObj);
 				snapshotArray.push(recipeObj);
 			})
 		})
@@ -28,15 +25,15 @@ const Home = (props) => {
 		// eslint-disable-next-line
 	}, []);
 
-	console.log(recipesArray);
 	let renderedRecipes = recipesArray.map((recipe, i) => {
 		return <RecipeListing image={recipe.image} title={recipe.title} key={recipe.recipeID} id={recipe.recipeID}/>
 	});
 	
 	return (
 		<div className="container-fluid">
-			<div className="row">
-				{renderedRecipes}	
+			<div className="row d-flex justify-content-around">
+				{renderedRecipes}
+				<AddNewRecipeListing />	
 			</div>
 		</div>
 	);

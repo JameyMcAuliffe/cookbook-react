@@ -9,7 +9,7 @@ const RecipeListing = (props) => {
 
 	return (
 		<Link to={recipeURL}>
-			<div className="card ml-2 col-sm-3 card-div">
+			<div className="card col-sm-3 card-div">
 				<img 
 					src={props.image} alt={props.title}
 					className="img-fluid"
