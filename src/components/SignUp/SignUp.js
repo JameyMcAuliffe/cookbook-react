@@ -103,7 +103,7 @@ const SignUpFormBase = (props) => {
 }
 
 const SignUpLink = () => (
-	<p>Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link></p>
+	<p className="text-white shadow-lg bg-dark rounded col-sm-6 offset-3 border border-white">Don't have an account? <Link to={ROUTES.SIGN_UP} className="text-primary">Sign Up</Link></p>
 );
 
 //compose nests higher order components 

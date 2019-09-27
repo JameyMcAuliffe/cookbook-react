@@ -9,14 +9,14 @@ const Ingredient = (props) => {
 					name="name"
 					id={props.id}
 					onChange={props.onIngredientChange}
-					//value={props.ingValue[props.id].name} 
+					value={props.ingValue.name} 
 					type="text" 
 					className="form-control col-sm-5" 
 					placeholder="Ingredient..."/>
 				<input
 					name="amount"
 					id={props.id}
-					//value={props.ingValue[props.id].amount}
+					value={props.ingValue.amount}
 					onChange={props.onIngredientChange} 
 					type="text" 
 					className="form-control col-sm-3"

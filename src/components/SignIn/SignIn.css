@@ -1,0 +1,13 @@
+.main-div {
+	/*background-color: #454545;*/
+	width: 40%;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: white;
+}
+
+.sign-in-text {
+  color: black;
+  text-shadow: -1px 0 white, 0 2px white, 2px 0 white, 0 -1px white;
+}
