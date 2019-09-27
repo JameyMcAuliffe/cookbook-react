@@ -11,6 +11,7 @@ import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
 import Home from './components/Home/Home';
 import NewRecipe from './components/Home/Recipe/NewRecipe/NewRecipe';
+import EditRecipe from './components/Home/Recipe/EditRecipe/EditRecipe';
 import RecipeDetail from './components/Home/RecipeDisplay/RecipeDetail/RecipeDetail';
 
 
@@ -31,12 +32,12 @@ const App = (props) => {
       <Router>
         <div className="App">
           <Navigation/>
-          <hr/>
           <Route exact path={ROUTES.SIGN_UP} component={SignUp}/>
           <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
           <Route exact path={ROUTES.HOME} component={Home}/>
           <Route exact path={ROUTES.NEW_RECIPE} component={NewRecipe}/>
           <Route exact path={ROUTES.RECIPE} component={RecipeDetail}/>
+          <Route exact path={ROUTES.EDIT} component={EditRecipe}/>
         </div>
       </Router>
     </AuthUserContext.Provider>

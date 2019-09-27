@@ -5,14 +5,17 @@ import { compose } from 'recompose';
 import { SignUpLink } from '../SignUp/SignUp';
 import { withFirebase } from '../Firebase/index';
 import * as ROUTES from '../../constants/routes';
+import './SignIn.css';
 
 
 const SignIn = () => {
 	return (
-		<div>
-			<h1>Sign In</h1>
-			<SignInForm/>
-			<SignUpLink />
+		<div className="d-flex justify-content-center">
+			<div className="main-div">
+				<h1 className="sign-in-text col-sm-4 offset-4 pb-1">Sign In</h1>
+				<SignInForm/>
+				<SignUpLink />
+			</div>
 		</div>
 	);
 }
@@ -54,7 +57,7 @@ const SignInFormBase = (props) => {
 	return (
 		<form onSubmit={onSubmit} className="form-group">
 			<input
-				className="form-control col-sm-6 offset-3 mb-2"
+				className="form-control col-sm-8 offset-2 mb-2 shadow-lg bg-dark text-white"
 				name="email"
 				value={email}
 				onChange={onChange}
@@ -62,12 +65,12 @@ const SignInFormBase = (props) => {
 				placeholder="Enter your email address..."
 			/>
 			<input
-				className="form-control col-sm-6 offset-3 mb-2"
+				className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
 				name="password"
 				value={password}
 				onChange={onChange}
 				type="text"
-				placeholder="Enter your password"
+				placeholder="Enter your password..."
 			/>
 			<button disabled={isInvalid} type="submit" className="btn btn-primary">Sign In</button>
 			{error && <p>{error.message}</p>}

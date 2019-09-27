@@ -1,24 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-//import Ingredient from './Ingredient/Ingredient';
 
 const Ingredients = (props) => {
-
-	// const [ingredientsArray, setIngredientsArray] = useState([]);
-
-	// let addIngredient = () => {
-	// 	let updatedIngredientsArray = [...ingredientsArray, <Ingredient />];
-	// 	setIngredientsArray(updatedIngredientsArray);
-	// }
-
-	// let renderedIngredientInputs = props.ingredientInputsArray.map((ingredient, i) => { 
-	// 	return <Ingredient key={i} />
-	// });
-
-	useEffect(() => {
-		//console.log(props.ingredientInputs);
-		//console.log('props: ', props);
-	})
 
 	return (
 		<div>
