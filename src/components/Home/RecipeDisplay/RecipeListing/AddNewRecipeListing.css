@@ -2,12 +2,11 @@
 	max-width: 315px;
 	cursor: pointer;
 	background-color: #055227;
-	/*border: 1px solid #79ad3e;*/
 }
 
 .card-div img {
 	margin-top: 15px;
-	border: 1px solid #79ad3e;
+	border: 1px solid #055227;
 	object-fit: cover;
   object-position: center;
   width: 100%;
@@ -23,4 +22,3 @@
 	-webkit-transform: scale(1.05);
 	transform: scale(1.05);
 }
-

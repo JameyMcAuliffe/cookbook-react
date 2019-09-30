@@ -3,7 +3,7 @@ import React from 'react';
 const Ingredient = (props) => {
 
 	return(
-		<div className="offset-1 mb-1">
+		<div className="mb-1 offset-1">
 			<div className="row offset-2">
 				<input
 					name="name"
@@ -11,7 +11,7 @@ const Ingredient = (props) => {
 					onChange={props.onIngredientChange}
 					value={props.ingValue.name} 
 					type="text" 
-					className="form-control col-sm-5" 
+					className="form-control col-sm-5 bg-dark text-white" 
 					placeholder="Ingredient..."/>
 				<input
 					name="amount"
@@ -19,7 +19,7 @@ const Ingredient = (props) => {
 					value={props.ingValue.amount}
 					onChange={props.onIngredientChange} 
 					type="text" 
-					className="form-control col-sm-3"
+					className="form-control col-sm-3 bg-dark text-white"
 					placeholder="Amount/measure..."/>
 			</div>
 		</div>

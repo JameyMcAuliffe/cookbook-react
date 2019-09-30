@@ -4,6 +4,7 @@ import { withAuthorization } from '../../../Session/index';
 import Ingredients from '../NewRecipe/Ingredients/Ingredients';
 import Ingredient from '../NewRecipe/Ingredients/Ingredient/Ingredient';
 import Instructions from '../NewRecipe/Instructions/Instructions';
+import './EditRecipe.css';
 
 
 const EditRecipe = (props) => {
@@ -88,30 +89,32 @@ const EditRecipe = (props) => {
 		setMappedIngredientInputs(mappedArray);
 	}, [ingredientInputsArray]);
 
-	//console.log(mappedIngredientInputs);
+	let cancelEdit = () => {
+		props.history.push(`../${recipeID}`);
+	}
 
 
 	return(
-		<div>
-			<h1>Edit Recipe</h1>
-			<div className="">
+		<div className="rounded col-sm-6 offset-3 mb-5 main-edit-div">
+			<h1 className="text-white mt-4">Edit Recipe</h1>
+			<div>
 				<form className="container"onSubmit={saveRecipe}>
 					<div className="form-group mt-4">
-						<h5 htmlFor="title">Name:</h5>
+						<h5 htmlFor="title" className="text-white">Name:</h5>
 						<input
 							onChange={onChange}
 							value={recipeDetails.title} 
 							type="text" 
 							name="title" 
-							className="form-control col-sm-4 offset-4"
+							className="form-control col-sm-8 offset-2 bg-dark text-white"
 							placeholder="Enter the recipe name..."/>
-						<h5 htmlFor="image" className="mt-4">Image</h5>
+						<h5 htmlFor="image" className="mt-4 text-white">Image</h5>
 						<input
 							onChange={onChange}
 							value={recipeDetails.image} 
 							type="text"
 							name="image"
-							className="form-control col-sm-4 offset-4"
+							className="form-control col-sm-8 offset-2 bg-dark text-white"
 							placeholder="Enter an image url..."
 							/>
 						<Ingredients 
@@ -119,7 +122,8 @@ const EditRecipe = (props) => {
 							ingredientInputs={mappedIngredientInputs} 
 							addNewIngredient={addNewIngredient}/>
 						<Instructions onChange={onChange} value={recipeDetails.directions}/>
-						<button type="submit" className="btn btn-primary mt-2">Save</button>
+						<button type="submit" className="btn btn-success mt-2 mr-1 mb-2">Save</button>
+						<button className="btn btn-warning mt-2 ml-1 mb-2" onClick={cancelEdit}>Cancel</button>
 					</div>
 				</form>
 			</div>
