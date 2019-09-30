@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 import { withAuthorization } from '../../../Session/index';
-import Paper from '../../../../images/paper.png';
 import './RecipeDetail.css';
 
 const RecipeDetail = (props) => {
@@ -54,7 +53,7 @@ const RecipeDetail = (props) => {
 			<h4 className="mb-4">{recipeDetails.directions}</h4>
 			<div className="mb-5">
 				<Link to={editRecipePath}>
-					<button className="btn btn-secondary m-4">Edit</button>
+					<button className="btn btn-primary m-4">Edit</button>
 				</Link>
 				<button className="btn btn-danger ml-4">Delete</button>
 			</div>

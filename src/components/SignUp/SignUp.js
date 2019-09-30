@@ -4,13 +4,16 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase/index';
 import * as ROUTES from '../../constants/routes';
+import './SignUp.css';
 
 
 const SignUp = () => {
 	return (
-		<div>
-			<h1>Sign Up</h1>
-			<SignUpForm />
+		<div className="d-flex justify-content-center">
+			<div className="main-div rounded">
+				<h1 className="text-white">Sign Up</h1>
+				<SignUpForm />
+			</div>
 		</div>
 	);
 }
@@ -65,7 +68,7 @@ const SignUpFormBase = (props) => {
 	return(
 		<form onSubmit={onSubmit} className="form-group">
 			<input
-				className="form-control col-sm-6 offset-3 mb-2"
+				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
 				name="username"
 				value={username}
 				onChange={onChange}
@@ -73,7 +76,7 @@ const SignUpFormBase = (props) => {
 				placeholder="What would you like to be called?"
 			/>
 			<input
-				className="form-control col-sm-6 offset-3 mb-2"
+				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
 				name="email"
 				value={email}
 				onChange={onChange}
@@ -81,15 +84,15 @@ const SignUpFormBase = (props) => {
 				placeholder="Enter a valid email"
 			/>
 			<input
-				className="form-control col-sm-6 offset-3 mb-2"
+				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
 				name="passwordOne"
 				value={passwordOne}
 				onChange={onChange}
 				type="text"
-				placeholder="Create a password"
+				placeholder="Create a password at least 6 characters long"
 			/>
 			<input
-				className="form-control col-sm-6 offset-3 mb-2"
+				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
 				name="passwordTwo"
 				value={passwordTwo}
 				onChange={onChange}
@@ -103,7 +106,7 @@ const SignUpFormBase = (props) => {
 }
 
 const SignUpLink = () => (
-	<p className="text-white shadow-lg bg-dark rounded col-sm-6 offset-3 border border-white">Don't have an account? <Link to={ROUTES.SIGN_UP} className="text-primary">Sign Up</Link></p>
+	<p className="text-white rounded col-sm-6 offset-3">Don't have an account? <Link to={ROUTES.SIGN_UP} className="text-primary">Sign Up</Link></p>
 );
 
 //compose nests higher order components 

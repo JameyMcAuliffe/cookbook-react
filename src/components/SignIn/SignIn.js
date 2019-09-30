@@ -11,8 +11,8 @@ import './SignIn.css';
 const SignIn = () => {
 	return (
 		<div className="d-flex justify-content-center">
-			<div className="main-div">
-				<h1 className="sign-in-text col-sm-4 offset-4 pb-1">Sign In</h1>
+			<div className="main-div rounded">
+				<h1 className="text-white col-sm-4 offset-4 pb-1 sign-in-text">Sign In</h1>
 				<SignInForm/>
 				<SignUpLink />
 			</div>
