@@ -26,6 +26,13 @@ const RecipeDetail = (props) => {
 		props.history.push(HOME);
 	}
 
+	let onDeleteRecipe = () => {
+		props.firebase.deleteRecipe(recipeID, uID)
+			.then(() => {
+				props.history.push('/');
+			})
+	}
+
 	useEffect(() => {
 		props.firebase.getRecipe(recipeID, uID)
 			.then(snapshot => {
@@ -60,7 +67,7 @@ const RecipeDetail = (props) => {
 					<Link to={editRecipePath}>
 						<button className="btn btn-primary m-4 border-dark">Edit</button>
 					</Link>
-					<button className="btn btn-danger ml-4 border-dark">Delete</button>
+					<button className="btn btn-danger ml-4 border-dark" onClick={onDeleteRecipe}>Delete</button>
 				</div>
 			</div>
 		</div>

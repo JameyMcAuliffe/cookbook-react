@@ -48,6 +48,8 @@ class Firebase {
 
   editRecipe = (recipeID, uid, recipe) => this.db.doc(`users/${uid}`).collection("recipes").doc(recipeID).update(recipe);
 
+  deleteRecipe = (recipeID, uid) => this.db.doc(`users/${uid}`).collection("recipes").doc(recipeID).delete();
+
 }
 
 export default Firebase;
