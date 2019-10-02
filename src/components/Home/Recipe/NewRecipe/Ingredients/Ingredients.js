@@ -17,8 +17,6 @@ const Ingredients = ({ingredientsArray, addNewIngredient, onDelete, onChange}) =
 		});
 
 		setIngredientInputsArray(mappedIngredientsArray);
-
-	// eslint-disable-next-line
 	}, [ingredientsArray, onDelete, onChange]);
 
 	return (
