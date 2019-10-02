@@ -21,7 +21,6 @@ const Navigation = ({authUser, firebase}) => {
  const NavigationAuth = (props) => {
 
  	const [userName, setUserName] = useState('');
- 	const [lastVisit, setLastVisit] = useState(null);
  	const uid = props.firebase.auth.O;
 
  	useEffect(() => {
@@ -30,9 +29,13 @@ const Navigation = ({authUser, firebase}) => {
  			.then(snapshot => {
  				setUserName(snapshot.data().username);
  			})
+ 			.catch((err) => {
+ 				return err;
+ 			})
+ 			// eslint-disable-next-line
  	},[]);
  	
- 	let welcomeMessage = <p className="nav-item navbar-nav text-white ml-auto">Welcome {userName}!</p>;
+ 	let welcomeMessage = <h5 className="nav-item navbar-nav text-white ml-auto">Welcome {userName}!</h5>;
 
  	return (
  		<nav className="navbar navbar-expand navbar-dark d-flex mb-5">

@@ -21,6 +21,9 @@ const Home = (props) => {
 		})
 		.then(() => {
 			setRecipesArray(snapshotArray);
+		})
+		.catch(err => {
+			return err;
 		});
 		// eslint-disable-next-line
 	}, []);
@@ -32,8 +35,8 @@ const Home = (props) => {
 	return (
 		<div className="container-fluid">
 			<div className="row d-flex justify-content-around">
-				{renderedRecipes}
-				<AddNewRecipeListing />	
+				<AddNewRecipeListing />
+				{renderedRecipes}	
 			</div>
 		</div>
 	);

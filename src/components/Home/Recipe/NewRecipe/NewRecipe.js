@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 import { withAuthorization } from '../../../Session/index';
 import Ingredients from './Ingredients/Ingredients';
-import Ingredient from './Ingredients/Ingredient/Ingredient';
 import Instructions from './Instructions/Instructions';
 import { HOME } from '../../../../constants/routes';
 import './NewRecipe.css';
@@ -13,6 +12,7 @@ const NewRecipe = (props) => {
 	const initialIngredientState = {
 		name: '',
 		amount: ''
+		//id: null
 	}
 
 	const initialState = {
@@ -23,10 +23,11 @@ const NewRecipe = (props) => {
 	}
 
 	const [newRecipeObj, setNewRecipeObj] = useState(initialState);
-	const [ingredientInputsArray, setIngredientInputsArray] = useState([]);
-	const [mappedIngredientInputs, setMappedIngredientInputs] = useState();
 
-
+	useEffect(() => {
+		console.log(newRecipeObj);
+	}, [newRecipeObj]);
+	
 	let saveRecipe = (e) => {
 		let uid = props.firebase.auth.O;
 		props.firebase.addRecipe(newRecipeObj, uid)
@@ -49,32 +50,25 @@ const NewRecipe = (props) => {
 		setNewRecipeObj(newRecipeObjClone);
 	}
 
+	let onDeleteIngredient = (e) => {
+		let id = parseInt(e.target.id);
+		let ingredientsClone = [...newRecipeObj.ingredients];
+		let recipeObjClone = {...newRecipeObj};
+		ingredientsClone.splice(id, 1);
+		recipeObjClone.ingredients = ingredientsClone;
+		setNewRecipeObj(recipeObjClone);
+	}
+
 	let addNewIngredient = () => {
 		let newRecipeObjClone = {...newRecipeObj};
 		newRecipeObjClone.ingredients.push(initialIngredientState);
 		setNewRecipeObj(newRecipeObjClone);
-
-		let ingredientInputsArrayClone = [...ingredientInputsArray];
-		ingredientInputsArrayClone.push(<Ingredient 
-																			onIngredientChange={onIngredientChange}
-																			id={ingredientInputsArray.length}
-																			ingValue={newRecipeObj.ingredients}
-																			key={ingredientInputsArray.length}/>);
-		setIngredientInputsArray(ingredientInputsArrayClone);
 	}
 
 	let onCancel = () => {
-		//setNewRecipeObj(initialState);
+		setNewRecipeObj(initialState);
 		props.history.push('/');
 	}
-
-	useEffect(() => {
-		let mappedArray = ingredientInputsArray.map(ing => {
-			return ing;
-		});
-
-		setMappedIngredientInputs(mappedArray);
-	}, [ingredientInputsArray]);
 
 	return (
 		<div className="rounded new-main-div col-sm-6 offset-3 mb-5">
@@ -99,9 +93,10 @@ const NewRecipe = (props) => {
 						placeholder="Paste an image url..."
 						/>
 					<Ingredients 
-						onChange={onChange}
-						ingredientInputs={mappedIngredientInputs} 
-						addNewIngredient={addNewIngredient}/>
+						onChange={onIngredientChange} 
+						addNewIngredient={addNewIngredient}
+						ingredientsArray={newRecipeObj.ingredients}
+						onDelete={onDeleteIngredient}/>
 					<Instructions onChange={onChange} value={newRecipeObj.directions}/>
 					<button type="submit" className="btn btn-success mt-2 mr-1">Save</button>
 					<button type="button" onClick={onCancel} className="btn btn-warning mt-2 ml-1">Cancel</button>
