@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withAuthorization } from '../../../Session/index';
 import './RecipeDetail.css';
 import { HOME } from '../../../../constants/routes';
+import ConfirmDelete from './ConfirmDelete/ConfirmDelete';
 
 const RecipeDetail = (props) => {
 
@@ -18,9 +19,7 @@ const RecipeDetail = (props) => {
 	const editRecipePath = `${props.history.location.pathname}/edit`;
 
 	const [recipeDetails, setRecipeDetails] = useState(initialState);
-	const styling = {
-		background: 'radial-gradient(circle, rgba(255, 232, 168, 1) 5%, rgba(173, 143, 62, 1) 60%)'
-	}
+	const [showDelete, setShowDelete] = useState(false);
 
 	const onBackClick = () => {
 		props.history.push(HOME);
@@ -29,8 +28,13 @@ const RecipeDetail = (props) => {
 	let onDeleteRecipe = () => {
 		props.firebase.deleteRecipe(recipeID, uID)
 			.then(() => {
+				setShowDelete(!showDelete);
 				props.history.push('/');
 			})
+	}
+
+	let toggleShowDelete = () => {
+		setShowDelete(!showDelete);
 	}
 
 	useEffect(() => {
@@ -45,9 +49,10 @@ const RecipeDetail = (props) => {
 	},[]);
 
 	return (
-		<div>
-			<button type="button" onClick={onBackClick} className="btn btn-success mb-4 mr-auto border-dark">Back to Recipes</button>
-			<div className="mb-5 col-sm-6 offset-3 rounded border border-dark" style={styling}>
+		<div className={showDelete ? "showDeleteStyling" : null}>
+			{showDelete ? <ConfirmDelete toggle={toggleShowDelete} deleteRecipe={onDeleteRecipe}/> : null}
+			<button type="button" onClick={onBackClick} className="btn btn-success mb-4 mt-4 mr-auto border-dark">Back to Recipes</button>
+			<div className="mb-5 col-sm-6 offset-3 rounded border border-dark recipeBackground">
 				<h2 className="title handwriting mt-4 mb-5">{recipeDetails.title}</h2>
 				<img  
 					src={recipeDetails.image} 
@@ -67,14 +72,12 @@ const RecipeDetail = (props) => {
 					<Link to={editRecipePath}>
 						<button className="btn btn-primary m-4 border-dark">Edit</button>
 					</Link>
-					<button className="btn btn-danger ml-4 border-dark" onClick={onDeleteRecipe}>Delete</button>
+					<button className="btn btn-danger ml-4 border-dark" onClick={toggleShowDelete}>Delete</button>
 				</div>
 			</div>
 		</div>
 	);
 }
-
-
 
 //returns true if authUser !== null
 const condition = authUser => !!authUser;
