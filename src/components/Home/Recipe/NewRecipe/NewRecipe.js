@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import { withAuthorization } from '../../../Session/index';
 import Ingredients from './Ingredients/Ingredients';
@@ -12,7 +12,6 @@ const NewRecipe = (props) => {
 	const initialIngredientState = {
 		name: '',
 		amount: ''
-		//id: null
 	}
 
 	const initialState = {
@@ -23,10 +22,6 @@ const NewRecipe = (props) => {
 	}
 
 	const [newRecipeObj, setNewRecipeObj] = useState(initialState);
-
-	useEffect(() => {
-		console.log(newRecipeObj);
-	}, [newRecipeObj]);
 	
 	let saveRecipe = (e) => {
 		let uid = props.firebase.auth.O;

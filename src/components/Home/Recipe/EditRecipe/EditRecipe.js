@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 import { withAuthorization } from '../../../Session/index';
 import Ingredients from '../NewRecipe/Ingredients/Ingredients';
-import Ingredient from '../NewRecipe/Ingredients/Ingredient/Ingredient';
 import Instructions from '../NewRecipe/Instructions/Instructions';
 import './EditRecipe.css';
 
@@ -23,30 +22,15 @@ const EditRecipe = (props) => {
 	}
 
 	const [recipeDetails, setRecipeDetails] = useState(initialState);
-	const [ingredientInputsArray, setIngredientInputsArray] = useState([]);
-	const [mappedIngredientInputs, setMappedIngredientInputs] = useState();
 
 	useEffect(() => {
 		props.firebase.getRecipe(recipeID, uID)
 			.then(snapshot => {
-				//console.log(snapshot.data());
 				setRecipeDetails(snapshot.data());
 				return snapshot.data();
 			})
 			// eslint-disable-next-line
 	},[]);
-
-	useEffect(() => {
-		let ingredientsArray = recipeDetails.ingredients.map((ing, i) => {
-				return <Ingredient 
-									ingValue={ing}
-									onIngredientChange={onIngredientChange}
-									id={i}
-									key={i}/>
-			});
-			setIngredientInputsArray(ingredientsArray);
-			// eslint-disable-next-line
-	}, [recipeDetails]);
 
 	let saveRecipe = (e) => {
 		props.firebase.editRecipe(recipeID, uID, recipeDetails)
@@ -71,23 +55,16 @@ const EditRecipe = (props) => {
 		let recipeDetailsClone = {...recipeDetails};
 		recipeDetailsClone.ingredients.push(initialIngredientState);
 		setRecipeDetails(recipeDetailsClone);
-
-		let ingredientInputsArrayClone = [...ingredientInputsArray];
-		ingredientInputsArrayClone.push(<Ingredient 
-																			onIngredientChange={onIngredientChange}
-																			id={ingredientInputsArray.length}
-																			ingValue={recipeDetails.ingredients[ingredientInputsArray.length - 1]}
-																			key={ingredientInputsArray.length}/>);
-		setIngredientInputsArray(ingredientInputsArrayClone);
 	}
 
-	useEffect(() => {
-		let mappedArray = ingredientInputsArray.map(ing => {
-			return ing;
-		});
-
-		setMappedIngredientInputs(mappedArray);
-	}, [ingredientInputsArray]);
+	let onDeleteIngredient = (e) => {
+		let id = parseInt(e.target.id);
+		let ingredientsClone = [...recipeDetails.ingredients];
+		let recipeObjClone = {...recipeDetails};
+		ingredientsClone.splice(id, 1);
+		recipeObjClone.ingredients = ingredientsClone;
+		setRecipeDetails(recipeObjClone);
+	}
 
 	let cancelEdit = () => {
 		props.history.push(`../${recipeID}`);
@@ -118,9 +95,11 @@ const EditRecipe = (props) => {
 							placeholder="Enter an image url..."
 							/>
 						<Ingredients 
-							onChange={onChange}
-							ingredientInputs={mappedIngredientInputs} 
-							addNewIngredient={addNewIngredient}/>
+							onChange={onIngredientChange} 
+							addNewIngredient={addNewIngredient}
+							ingredientsArray={recipeDetails.ingredients}
+							onDelete={onDeleteIngredient}
+							/>
 						<Instructions onChange={onChange} value={recipeDetails.directions}/>
 						<button type="submit" className="btn btn-success mt-2 mr-1 mb-2">Save</button>
 						<button className="btn btn-warning mt-2 ml-1 mb-2" onClick={cancelEdit}>Cancel</button>
@@ -135,4 +114,3 @@ const EditRecipe = (props) => {
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(EditRecipe);
-
