@@ -66,42 +66,45 @@ const SignUpFormBase = (props) => {
 		username.trim() === '';
 
 	return(
-		<form onSubmit={onSubmit} className="form-group">
-			<input
-				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
-				name="username"
-				value={username}
-				onChange={onChange}
-				type="text"
-				placeholder="What would you like to be called?"
-			/>
-			<input
-				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
-				name="email"
-				value={email}
-				onChange={onChange}
-				type="text"
-				placeholder="Enter a valid email"
-			/>
-			<input
-				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
-				name="passwordOne"
-				value={passwordOne}
-				onChange={onChange}
-				type="text"
-				placeholder="Create a password at least 6 characters long"
-			/>
-			<input
-				className="form-control col-sm-8 offset-2 mb-2 bg-dark"
-				name="passwordTwo"
-				value={passwordTwo}
-				onChange={onChange}
-				type="text"
-				placeholder="Confirm password"
-			/>
-			<button disabled={isInvalid} type="submit" className="btn btn-primary">Create Account</button>
-			{error && <p>{error.message}</p>}
-		</form>
+		<div>
+			<form onSubmit={onSubmit} className="form-group">
+				<input
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					name="username"
+					value={username}
+					onChange={onChange}
+					type="text"
+					placeholder="What would you like to be called?"
+				/>
+				<input
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					name="email"
+					value={email}
+					onChange={onChange}
+					type="text"
+					placeholder="Enter a valid email"
+				/>
+				<input
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					name="passwordOne"
+					value={passwordOne}
+					onChange={onChange}
+					type="text"
+					placeholder="Create a password at least 6 characters long"
+				/>
+				<input
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					name="passwordTwo"
+					value={passwordTwo}
+					onChange={onChange}
+					type="text"
+					placeholder="Confirm password"
+				/>
+				<button disabled={isInvalid} type="submit" className="btn btn-primary">Create Account</button>
+				{error && <p>{error.message}</p>}
+			</form>
+			<p className="text-white rounded col-sm-6 offset-3">Already have an account? <Link to={ROUTES.SIGN_IN} className="text-primary">Sign In</Link></p>
+		</div>
 	)
 }
 
