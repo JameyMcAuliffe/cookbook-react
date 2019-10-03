@@ -12,13 +12,14 @@ const RecipeDetail = (props) => {
 	const uID = props.firebase.auth.O;
 	const initialState = {
 		title: null,
-		directions: null,
+		directions: '',
 		image: null,
 		ingredients: []
 	}
 	const editRecipePath = `${props.history.location.pathname}/edit`;
 
 	const [recipeDetails, setRecipeDetails] = useState(initialState);
+	const [renderedDirections, setRenderedDirections] = useState('');
 	const [showDelete, setShowDelete] = useState(false);
 
 	const onBackClick = () => {
@@ -48,6 +49,19 @@ const RecipeDetail = (props) => {
 			// eslint-disable-next-line
 	},[]);
 
+	useEffect(() => {
+			let splitDirections = recipeDetails.directions.split('\n');
+			let mappedDirections = splitDirections.map((dir, i) => {
+				return (
+					<li key={i}>
+						<h4 className="handwriting">{i+1}) {dir}</h4>
+					</li>
+				);
+			});
+			
+			setRenderedDirections(mappedDirections);
+	},[recipeDetails]);
+
 	return (
 		<div className={showDelete ? "showDeleteStyling" : null}>
 			{showDelete ? <ConfirmDelete toggle={toggleShowDelete} deleteRecipe={onDeleteRecipe}/> : null}
@@ -67,7 +81,9 @@ const RecipeDetail = (props) => {
 					);
 				})}
 				<h3 className="mt-4">Directions:</h3>
-				<h4 className="mb-4 handwriting">{recipeDetails.directions}</h4>
+				<ul className="directions-list mr-auto">
+					{renderedDirections}
+				</ul>	
 				<div className="mb-5">
 					<Link to={editRecipePath}>
 						<button className="btn btn-primary m-4 border-dark">Edit</button>

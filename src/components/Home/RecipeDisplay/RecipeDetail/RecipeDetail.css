@@ -22,3 +22,9 @@
 .recipeBackground {
 	background: radial-gradient(circle, rgba(255, 232, 168, 1) 5%, rgba(173, 143, 62, 1) 60%);
 }
+
+.directions-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
