@@ -1,0 +1,12 @@
+.page-footer {
+	background-color: #79ad3e;
+	border-top: solid 2px #055227;
+	position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer-logo {
+	width: 35px;
+}

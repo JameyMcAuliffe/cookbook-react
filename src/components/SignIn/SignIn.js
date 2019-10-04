@@ -10,7 +10,7 @@ import './SignIn.css';
 
 const SignIn = () => {
 	return (
-		<div className="d-flex justify-content-center">
+		<div className="d-flex justify-content-center signin-div">
 			<div className="main-div rounded">
 				<h1 className="text-white col-sm-4 offset-4 pb-1 sign-in-text">Sign In</h1>
 				<SignInForm/>
@@ -73,7 +73,7 @@ const SignInFormBase = (props) => {
 				placeholder="Enter your password..."
 			/>
 			<button disabled={isInvalid} type="submit" className="btn btn-primary">Sign In</button>
-			{error && <p>{error.message}</p>}
+			{error && <p className="text-white mt-2">{error.message}</p>}
 		</form>
 	);
 }

@@ -8,7 +8,9 @@
 
 .recipeImage {
 	border: black solid 2px;
-	max-width: 500px;
+	max-width: 100%;
+	/*max-width: 500px;*/
+	height: auto;
 }
 
 .showDeleteStyling {
@@ -17,6 +19,7 @@
 	left: 0;
 	top: 0;
 	overflow: auto;
+	overflow-y: hidden;
 }
 
 .recipeBackground {

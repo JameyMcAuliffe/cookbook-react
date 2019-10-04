@@ -29,6 +29,9 @@ const NewRecipe = (props) => {
 			.then(() => {
 				setNewRecipeObj({...initialState});
 				props.history.push(HOME);
+			})
+			.catch(error => {
+				return error;
 			});
 
 		e.preventDefault();
