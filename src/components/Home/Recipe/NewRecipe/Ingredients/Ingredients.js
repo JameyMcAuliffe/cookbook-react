@@ -5,7 +5,7 @@ import Ingredient from './Ingredient/Ingredient';
 const Ingredients = ({ingredientsArray, addNewIngredient, onDelete, onChange}) => {
 
 	const [ingredientInputsArray, setIngredientInputsArray] = useState([]);
-
+	
 	useEffect(() => {
 		let mappedIngredientsArray = ingredientsArray.map((ing, i) => {
 			return <Ingredient

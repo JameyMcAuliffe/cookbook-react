@@ -1,6 +1,5 @@
 import React from 'react';
 
-import ListIcon from '../../../../../images/list.png';
 import './Instructions.css';
 
 const Instructions = ({onChange, value}) => {
@@ -9,9 +8,6 @@ const Instructions = ({onChange, value}) => {
 		<div className="mt-4">
 			<div>
 				<h5 className="text-white">Directions: </h5>
-				<button className="btn" type="button">
-					<img className="list-icon mb-3" src={ListIcon} alt="list_icon"/>
-				</button>
 			</div>
 			<textarea
 				onChange={onChange}

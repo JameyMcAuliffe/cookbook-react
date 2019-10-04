@@ -69,7 +69,7 @@ const SignUpFormBase = (props) => {
 		<div>
 			<form onSubmit={onSubmit} className="form-group">
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
 					name="username"
 					value={username}
 					onChange={onChange}
@@ -77,7 +77,7 @@ const SignUpFormBase = (props) => {
 					placeholder="What would you like to be called?"
 				/>
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
 					name="email"
 					value={email}
 					onChange={onChange}
@@ -85,7 +85,7 @@ const SignUpFormBase = (props) => {
 					placeholder="Enter a valid email"
 				/>
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
 					name="passwordOne"
 					value={passwordOne}
 					onChange={onChange}
@@ -93,7 +93,7 @@ const SignUpFormBase = (props) => {
 					placeholder="Create a password at least 6 characters long"
 				/>
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
 					name="passwordTwo"
 					value={passwordTwo}
 					onChange={onChange}
@@ -101,7 +101,7 @@ const SignUpFormBase = (props) => {
 					placeholder="Confirm password"
 				/>
 				<button disabled={isInvalid} type="submit" className="btn btn-primary">Create Account</button>
-				{error && <p>{error.message}</p>}
+				{error && <p className="text-white mt-2">{error.message}</p>}
 			</form>
 			<p className="text-white rounded col-sm-6 offset-3">Already have an account? <Link to={ROUTES.SIGN_IN} className="text-primary">Sign In</Link></p>
 		</div>
