@@ -57,7 +57,7 @@ const SignInFormBase = (props) => {
 	return (
 		<form onSubmit={onSubmit} className="form-group">
 			<input
-				className="form-control col-sm-8 offset-2 mb-2 shadow-lg bg-dark text-white"
+				className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
 				name="email"
 				value={email}
 				onChange={onChange}

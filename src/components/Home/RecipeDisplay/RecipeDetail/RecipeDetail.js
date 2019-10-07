@@ -84,7 +84,7 @@ const RecipeDetail = (props) => {
 						alt={recipeDetails.title}
 						className="rounded recipeImage mb-5 img-fluid"/>	
 				</div>
-				<h3>Ingredients:</h3>
+				<h3><u>Ingredients</u></h3>
 				{recipeDetails.ingredients.map((ing, i) => {
 					return (
 						<div key={i}>
@@ -92,7 +92,7 @@ const RecipeDetail = (props) => {
 						</div>
 					);
 				})}
-				<h3 className="mt-4">Directions:</h3>
+				<h3 className="mt-4"><u>Directions</u></h3>
 				<ul className="directions-list mr-auto">
 					{renderedDirections}
 				</ul>	
