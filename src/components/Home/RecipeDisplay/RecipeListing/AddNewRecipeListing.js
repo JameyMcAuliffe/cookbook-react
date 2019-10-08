@@ -8,8 +8,8 @@ import AddNewRecipeImageLink from '../../../../images/plus_3.png';
 const AddNewRecipeListing = () => {
 
 	return (
-		<Link to={NEW_RECIPE} style={{textDecoration: 'none'}}>
-			<div className="card ml-2 col-sm-3 card-div mb-4 rounded border-white">
+		<Link to={NEW_RECIPE} style={{textDecoration: 'none'}} className="col-sm-3 d-flex justify-content-center">
+			<div className="card ml-2 card-div mb-4 rounded border-white">
 				<img	 
 					src={AddNewRecipeImageLink} alt="add new recipe link"
 					className="img-fluid add-div"

@@ -4,7 +4,7 @@ import './Search.css';
 
 const Search = ({value, onChange}) => {
 	return (
-		<div className="mb-5 d-flex justify-content-center">
+		<div className="mb-5 d-flex justify-content-center rounded">
 			<input
 				onChange={onChange}
 				value={value} 
