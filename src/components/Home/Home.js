@@ -35,12 +35,13 @@ const Home = (props) => {
 	}, []);
 
 	let onSearchUpdate = (e) => {
-		setSearchTerm(e.target.value.toLowerCase());
+		setSearchTerm(e.target.value);
 	}
 
+	//filters recipesArray with the search term then returns RecipeListing components for each result
 	useEffect(() => {
 		let recipeComponents = recipesArray.filter((recipe) => {
-			return recipe.title.toLowerCase().includes(searchTerm);
+			return recipe.title.toLowerCase().trim('').includes(searchTerm.toLowerCase().trim(''));
 		})
 		.map((recipe, i) => {
 			return <RecipeListing image={recipe.image} title={recipe.title} key={recipe.recipeID} id={recipe.recipeID}/>
@@ -52,8 +53,8 @@ const Home = (props) => {
 	return (
 		<div className="container-fluid home-div">
 			<Search onChange={onSearchUpdate} value={searchTerm}/>
-			<div className="row d-flex justify-content-around">
-				<AddNewRecipeListing />
+			<div className="row">
+				{searchTerm.trim('') === '' ? <AddNewRecipeListing /> : null}
 				{renderedRecipes}	
 			</div>
 		</div>

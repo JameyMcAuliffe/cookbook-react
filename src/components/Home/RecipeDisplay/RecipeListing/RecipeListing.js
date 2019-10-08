@@ -8,8 +8,8 @@ const RecipeListing = (props) => {
 	const recipeURL = `/recipe/${recipeID}`;
 
 	return (
-		<Link to={recipeURL} style={{textDecoration: 'none'}}>
-			<div className="card col-sm-3 card-div mb-4 rounded border-white">
+		<Link to={recipeURL} style={{textDecoration: 'none'}} className="col-sm-3 d-flex justify-content-center">
+			<div className="card card-div mb-4 rounded border-white">
 				<img 
 					src={props.image} alt={props.title}
 					className="img-responsive thumbnail border-white"
