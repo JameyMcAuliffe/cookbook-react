@@ -10,7 +10,7 @@ import './SignUp.css';
 const SignUp = () => {
 	return (
 		<div className="d-flex justify-content-center">
-			<div className="main-div rounded">
+			<div className="main-div sign-up-div rounded">
 				<h1 className="text-white">Sign Up</h1>
 				<SignUpForm />
 			</div>
@@ -69,7 +69,7 @@ const SignUpFormBase = (props) => {
 		<div>
 			<form onSubmit={onSubmit} className="form-group">
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white sign-up-input"
 					name="username"
 					value={username}
 					onChange={onChange}
@@ -77,7 +77,7 @@ const SignUpFormBase = (props) => {
 					placeholder="What would you like to be called?"
 				/>
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white sign-up-input"
 					name="email"
 					value={email}
 					onChange={onChange}
@@ -85,7 +85,7 @@ const SignUpFormBase = (props) => {
 					placeholder="Enter a valid email"
 				/>
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white sign-up-input"
 					name="passwordOne"
 					value={passwordOne}
 					onChange={onChange}
@@ -93,7 +93,7 @@ const SignUpFormBase = (props) => {
 					placeholder="Create a password at least 6 characters long"
 				/>
 				<input
-					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
+					className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white sign-up-input"
 					name="passwordTwo"
 					value={passwordTwo}
 					onChange={onChange}
@@ -103,13 +103,13 @@ const SignUpFormBase = (props) => {
 				<button disabled={isInvalid} type="submit" className="btn btn-primary">Create Account</button>
 				{error && <p className="text-white mt-2">{error.message}</p>}
 			</form>
-			<p className="text-white rounded col-sm-6 offset-3">Already have an account? <Link to={ROUTES.SIGN_IN} className="text-primary">Sign In</Link></p>
+			<p className="text-white sign-in-link mb-2 rounded col-sm-6 offset-3">Already have an account? <Link to={ROUTES.SIGN_IN} className="text-primary">Sign In</Link></p>
 		</div>
 	)
 }
 
 const SignUpLink = () => (
-	<p className="text-white rounded col-sm-6 offset-3">Don't have an account? <Link to={ROUTES.SIGN_UP} className="text-primary">Sign Up</Link></p>
+	<p className="text-white rounded">Don't have an account? <Link to={ROUTES.SIGN_UP} className="text-primary">Sign Up</Link></p>
 );
 
 //compose nests higher order components 

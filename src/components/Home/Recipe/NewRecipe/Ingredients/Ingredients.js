@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import Ingredient from './Ingredient/Ingredient';
+import './Ingredients.css';
 
 const Ingredients = ({ingredientsArray, addNewIngredient, onDelete, onChange}) => {
 
@@ -25,7 +26,7 @@ const Ingredients = ({ingredientsArray, addNewIngredient, onDelete, onChange}) =
 			{ingredientInputsArray}
 			<button 
 				type="button" 
-				className="form-group col-sm-4 btn-primary mt-1"
+				className="form-group add-ing-button btn-primary mt-1"
 				onClick={addNewIngredient}>Add Ingredient</button>
 		</div>
 	);

@@ -10,9 +10,9 @@ import './SignIn.css';
 
 const SignIn = () => {
 	return (
-		<div className="d-flex justify-content-center signin-div">
-			<div className="main-div rounded">
-				<h1 className="text-white col-sm-4 offset-4 pb-1 sign-in-text">Sign In</h1>
+		<div className="d-flex justify-content-center container-fluid">
+			<div className="main-div rounded sign-in-div justify-content-center">
+				<h1 className="text-white pb-1 sign-in-text">Sign In</h1>
 				<SignInForm/>
 				<SignUpLink />
 			</div>
@@ -55,9 +55,9 @@ const SignInFormBase = (props) => {
 	const isInvalid = password.trim() === '' || email.trim() === '';
 
 	return (
-		<form onSubmit={onSubmit} className="form-group">
+		<form onSubmit={onSubmit} className="form-group justify-content-center">
 			<input
-				className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
+				className="form-control  mb-2 bg-dark text-white sign-in-input"
 				name="email"
 				value={email}
 				onChange={onChange}
@@ -65,7 +65,7 @@ const SignInFormBase = (props) => {
 				placeholder="Enter your email address..."
 			/>
 			<input
-				className="form-control col-sm-8 offset-2 mb-2 bg-dark text-white"
+				className="form-control mb-2 bg-dark text-white sign-in-input"
 				name="password"
 				value={password}
 				onChange={onChange}

@@ -69,7 +69,7 @@ const NewRecipe = (props) => {
 	}
 
 	return (
-		<div className="rounded new-main-div col-sm-6 offset-3 mb-5">
+		<div className="rounded new-main-div  mb-5 container-fluid">
 			<h1 className="text-white mt-2">New Recipe</h1>
 			<form className="container"onSubmit={saveRecipe}>
 				<div className="form-group mt-4">
@@ -79,7 +79,7 @@ const NewRecipe = (props) => {
 						value={newRecipeObj.title} 
 						type="text" 
 						name="title" 
-						className="form-control col-sm-8 offset-2 bg-dark text-white"
+						className="form-control new-input bg-dark text-white"
 						placeholder="Enter the recipe name..."/>
 					<h5 htmlFor="image" className="mt-4 text-white">Image Url:</h5>
 					<input
@@ -87,7 +87,7 @@ const NewRecipe = (props) => {
 						value={newRecipeObj.image} 
 						type="text"
 						name="image"
-						className="form-control bg-dark text-white col-sm-8 offset-2"
+						className="form-control bg-dark text-white new-input"
 						placeholder="Paste an image url..."
 						/>
 					<Ingredients 

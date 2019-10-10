@@ -1,10 +1,35 @@
 .main-div {
 	background-color: #055227;
 	border: solid 2px #79ad3e;
-	width: 40%;
 	margin-top: 60px;
 }
 
 .form-control::-webkit-input-placeholder {
   color: white;
+}
+
+.sign-up-div {
+	width: 50%;
+}
+
+.sign-in-link {
+	margin: auto;
+}
+
+/* Mobile Styles */
+@media (max-width: 700px) {
+   .sign-up-div {
+   		width: 90%;
+   }
+
+   .sign-up-input {
+   		width: 90%;
+   		margin: auto;
+   }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+	.sign-up-div {
+		width: 80%;
+	}
 }

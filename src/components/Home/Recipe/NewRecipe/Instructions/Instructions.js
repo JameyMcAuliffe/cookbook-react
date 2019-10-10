@@ -13,7 +13,7 @@ const Instructions = ({onChange, value}) => {
 				onChange={onChange}
 				value={value}
 				name="directions" 
-				className="form-control col-sm-8 offset-2 bg-dark text-white" 
+				className="form-control instructions-input bg-dark text-white" 
 				cols="30" 
 				rows="10"
 				placeholder="Hit enter for a new step, each step will automatically be numbered after submitting the recipe..."></textarea>
