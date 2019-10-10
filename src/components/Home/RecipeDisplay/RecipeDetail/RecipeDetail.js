@@ -82,7 +82,7 @@ const RecipeDetail = (props) => {
 					<img  
 						src={recipeDetails.image} 
 						alt={recipeDetails.title}
-						className="rounded recipeImage mb-5 img-fluid"/>	
+						className="rounded recipeImage mb-5 img-fluid img-responsive"/>	
 				</div>
 				<h3><u>Ingredients</u></h3>
 				{recipeDetails.ingredients.map((ing, i) => {

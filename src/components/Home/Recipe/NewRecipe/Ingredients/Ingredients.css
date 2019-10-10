@@ -1,0 +1,11 @@
+@media (max-width: 1200px) {
+  .add-ing-button {
+  	width: 40%;
+  }
+}
+
+@media (max-width: 800px) {
+  .add-ing-button {
+  	width: 50%;
+  }
+}

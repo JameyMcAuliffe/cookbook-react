@@ -1,0 +1,35 @@
+.ing-name {
+	width: 55%;
+}
+
+.ing-amount {
+	width: 35%;
+}
+
+.ing-delete {
+	width: 10%;
+}
+
+.ing-div {
+	margin: auto;
+}
+
+@media (max-width: 800px) {
+	.ing-div {
+		margin-bottom: 10px;
+		display: flex;
+		justify-content: center;
+	}
+
+   .ing-name {
+		width: 90%;
+	}
+
+	.ing-amount {
+		width: 90%;
+	}
+
+	.ing-delete {
+		width: 90%;
+	}
+}

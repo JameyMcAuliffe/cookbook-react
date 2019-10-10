@@ -1,4 +1,33 @@
 .new-main-div {
 	background-color: #055227;
 	border: solid 2px #79ad3e;
+	width: 40%;
+	margin: auto;
 }
+
+.new-input {
+	width: 70%;
+	margin: auto;
+}
+
+@media (max-width: 1200px) {
+   .new-main-div {
+   		width: 60%;
+   }
+
+   .new-input {
+   		width: 80%;
+   }
+}
+
+@media (max-width: 800px) {
+   .new-main-div {
+   		width: 80%;
+   }
+
+   .new-input {
+   		width: 90%;
+   }
+}
+
+

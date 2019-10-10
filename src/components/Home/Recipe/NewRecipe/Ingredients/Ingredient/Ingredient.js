@@ -1,17 +1,19 @@
 import React from 'react';
 
+import './Ingredient.css';
+
 const Ingredient = ({id, value, onDelete, onChange}) => {
 
 	return(
 		<div className="mb-1">
-			<div className="row">
+			<div className="row ing-div">
 				<input
 					name="name"
 					id={id}
 					onChange={onChange}
 					value={value.name} 
 					type="text" 
-					className="form-control col-sm-6 bg-dark text-white" 
+					className="form-control bg-dark text-white ing-name" 
 					placeholder="Ingredient..."/>
 				<input
 					name="amount"
@@ -19,12 +21,12 @@ const Ingredient = ({id, value, onDelete, onChange}) => {
 					value={value.amount}
 					onChange={onChange} 
 					type="text" 
-					className="form-control col-sm-5 bg-dark text-white"
+					className="form-control bg-dark text-white ing-amount"
 					placeholder="Amount/measure..."/>
 				<button
 					id={id}
 					onClick={onDelete} 
-					className="btn btn-danger border-white text-white col-sm-1 font-weight-bold" 
+					className="btn btn-danger border-white text-white font-weight-bold ing-delete" 
 					type="button">X</button>
 			</div>
 		</div>

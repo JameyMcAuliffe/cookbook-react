@@ -2,3 +2,31 @@
 	background-color: #79ad3e;
 	border-bottom: solid 2px #055227;
 }
+
+.sidebar {
+	position: fixed;
+	z-index: 1;
+	box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.5);
+	left: 65%;
+	background-color: #055227;
+	border-left: solid 2px #79ad3e;
+	border-bottom: solid 2px #79ad3e;
+	border-top: solid 2px #79ad3e;
+	width: 35%;
+	margin-top: -48px;
+	height: 120px;
+}
+
+.sidebar-item {
+	color: white;
+}
+
+.close-sidebar {
+	z-index: 1;
+	background-color: #e07209;
+	position:fixed;
+	width: 15%;
+	left: 84%;
+	margin-top: 75px;
+	box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.5);
+}

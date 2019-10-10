@@ -9,7 +9,8 @@
 .recipeImage {
 	border: black solid 2px;
 	max-width: 100%;
-	/*max-width: 500px;*/
+	object-fit: cover;
+  object-position: center;
 	height: auto;
 }
 

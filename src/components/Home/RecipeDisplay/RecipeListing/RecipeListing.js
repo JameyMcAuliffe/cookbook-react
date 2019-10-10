@@ -12,7 +12,7 @@ const RecipeListing = (props) => {
 			<div className="card card-div mb-4 rounded border-white">
 				<img 
 					src={props.image} alt={props.title}
-					className="img-responsive thumbnail border-white"
+					className="img-responsive thumbnail border-white img-fluid"
 					/>
 				<div className="card-body">
 					<h5 className="card-title text-white">{props.title}</h5>
