@@ -76,9 +76,9 @@ const RecipeDetail = (props) => {
 		<div className={showDelete ? "showDeleteStyling" : null}>
 			{showDelete ? <ConfirmDelete toggle={toggleShowDelete} deleteRecipe={onDeleteRecipe}/> : null}
 			<button type="button" onClick={onBackClick} className="btn btn-success mb-4 mt-4 mr-auto border-dark">Back to Recipes</button>
-			<div className="mb-5 col-sm-6 offset-3 rounded border border-dark recipeBackground">
+			<div className="mb-5 recipe-detail-div rounded border border-dark recipeBackground">
 				<h2 className="title handwriting mt-4 mb-5">{recipeDetails.title}</h2>
-				<div className="col-sm-10 offset-1">
+				<div>
 					<img  
 						src={recipeDetails.image} 
 						alt={recipeDetails.title}

@@ -72,7 +72,7 @@ const EditRecipe = (props) => {
 
 
 	return(
-		<div className="rounded col-sm-6 offset-3 mb-5 main-edit-div">
+		<div className="rounded mb-5 edit-main-div">
 			<h1 className="text-white mt-4">Edit Recipe</h1>
 			<div>
 				<form className="container"onSubmit={saveRecipe}>
@@ -83,7 +83,7 @@ const EditRecipe = (props) => {
 							value={recipeDetails.title} 
 							type="text" 
 							name="title" 
-							className="form-control col-sm-8 offset-2 bg-dark text-white"
+							className="form-control edit-input bg-dark text-white"
 							placeholder="Enter the recipe name..."/>
 						<h5 htmlFor="image" className="mt-4 text-white">Image</h5>
 						<input
@@ -91,7 +91,7 @@ const EditRecipe = (props) => {
 							value={recipeDetails.image} 
 							type="text"
 							name="image"
-							className="form-control col-sm-8 offset-2 bg-dark text-white"
+							className="form-control edit-input bg-dark text-white"
 							placeholder="Enter an image url..."
 							/>
 						<Ingredients 

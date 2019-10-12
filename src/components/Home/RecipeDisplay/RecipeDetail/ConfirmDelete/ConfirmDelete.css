@@ -1,7 +1,25 @@
 .confirmDiv {
 	background-color: #055227;
 	border: solid 2px #79ad3e;
+	width: 50%;
 	position: fixed;
 	z-index: 2;
 	margin-top: 80px;
 }
+
+.full-width {
+	width: 100%;
+}
+
+@media (max-width: 1200px) {
+   .confirmDiv {
+   		width: 70%;
+   }
+}
+
+@media (max-width: 800px) {
+   .confirmDiv {
+   		width: 90%;
+   }
+}
+

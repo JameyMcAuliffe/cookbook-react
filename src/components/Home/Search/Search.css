@@ -1,4 +1,17 @@
 .search-bar {
 	border: solid 5px #055227;
 	height: 40px;
+	width: 25%;
+}
+
+@media (max-width: 1200px) {
+  .search-bar {
+  	width: 40%;
+  }
+}
+
+@media (max-width: 800px) {
+   .search-bar {
+   		width: 80%;
+   }
 }

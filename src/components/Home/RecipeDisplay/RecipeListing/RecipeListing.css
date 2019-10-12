@@ -1,5 +1,5 @@
 .card-div {
-	max-width: 315px;
+	width: 90%;
 	cursor: pointer;
 	background-color: #055227;
 }
@@ -11,7 +11,6 @@
 	border: 1px solid #79ad3e;
 	object-fit: cover;
   object-position: center;
-  width: 100%;
   width: 250px;
   height: 250px;
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -24,4 +23,5 @@
 	-webkit-transform: scale(1.05);
 	transform: scale(1.05);
 }
+
 
