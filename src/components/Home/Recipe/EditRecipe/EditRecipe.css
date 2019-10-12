@@ -1,4 +1,31 @@
-.main-edit-div {
+.edit-main-div {
 	background-color: #055227;
 	border: solid 2px #79ad3e;
+	width: 40%;
+	margin: auto;
+}
+
+.edit-input {
+	width: 70%;
+	margin: auto;
+}
+
+@media (max-width: 1200px) {
+   .edit-main-div {
+   		width: 60%;
+   }
+
+   .edit-input {
+   		width: 80%;
+   }
+}
+
+@media (max-width: 800px) {
+   .edit-main-div {
+   		width: 80%;
+   }
+
+   .edit-input {
+   		width: 90%;
+   }
 }

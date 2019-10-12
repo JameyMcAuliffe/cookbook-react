@@ -2,16 +2,18 @@
 	font-family: Itim;
 }
 
+.recipe-detail-div {
+	width: 50%;
+	margin: auto;
+}
+
 .title {
 	text-decoration: underline;
 }
 
 .recipeImage {
 	border: black solid 2px;
-	max-width: 100%;
-	object-fit: cover;
-  object-position: center;
-	height: auto;
+	width: 80%;
 }
 
 .showDeleteStyling {
@@ -21,6 +23,7 @@
 	top: 0;
 	overflow: auto;
 	overflow-y: hidden;
+	margin: auto;
 }
 
 .recipeBackground {
@@ -33,6 +36,24 @@
 	margin: 0;
 }
 
-.fullHeight {
-	margin-bottom: 800px;
+@media (max-width: 1200px) {
+   .recipe-detail-div {
+   		width: 70%;
+   }
+
+   .recipeImage {
+   		width: 80%;
+   		margin: auto;
+   }
+}
+
+@media (max-width: 800px) {
+   .recipe-detail-div {
+   		width: 90%;
+   }
+
+   .recipeImage {
+   		width: 90%;
+   		margin: auto;
+   }
 }

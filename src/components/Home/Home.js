@@ -53,7 +53,7 @@ const Home = (props) => {
 	return (
 		<div className="container-fluid home-div">
 			<Search onChange={onSearchUpdate} value={searchTerm}/>
-			<div className="row">
+			<div className="row cards-row">
 				{searchTerm.trim('') === '' ? <AddNewRecipeListing /> : null}
 				{renderedRecipes}	
 			</div>

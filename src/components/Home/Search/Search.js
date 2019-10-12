@@ -10,7 +10,7 @@ const Search = ({value, onChange}) => {
 				value={value} 
 				type="text"
 				placeholder="Search..."
-				className="bg-dark text-white search-bar mt-4 mb-4 col-sm-3 text-white"/>
+				className="bg-dark text-white search-bar mt-4 mb-4 text-white"/>
 		</div>
 	);
 }
