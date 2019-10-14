@@ -25,6 +25,7 @@ const NewRecipe = (props) => {
 	
 	let saveRecipe = (e) => {
 		let uid = props.firebase.auth.O;
+	
 		props.firebase.addRecipe(newRecipeObj, uid)
 			.then(() => {
 				setNewRecipeObj({...initialState});
@@ -68,6 +69,8 @@ const NewRecipe = (props) => {
 		props.history.push('/');
 	}
 
+	let disabledCheck = newRecipeObj.title.trim('') === '' ? true : false;
+
 	return (
 		<div className="rounded new-main-div  mb-5 container-fluid">
 			<h1 className="text-white mt-2">New Recipe</h1>
@@ -96,7 +99,7 @@ const NewRecipe = (props) => {
 						ingredientsArray={newRecipeObj.ingredients}
 						onDelete={onDeleteIngredient}/>
 					<Instructions onChange={onChange} value={newRecipeObj.directions}/>
-					<button type="submit" className="btn btn-success mt-2 mr-1">Save</button>
+					<button type="submit" className="btn btn-success mt-2 mr-1" disabled={disabledCheck}>Save</button>
 					<button type="button" onClick={onCancel} className="btn btn-warning mt-2 ml-1">Cancel</button>
 				</div>
 			</form>

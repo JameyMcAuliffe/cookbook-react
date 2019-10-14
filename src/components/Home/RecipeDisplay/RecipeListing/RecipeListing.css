@@ -33,6 +33,7 @@
 .card-div:hover {
 	-webkit-transform: scale(1.05);
 	transform: scale(1.05);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 1000px) {

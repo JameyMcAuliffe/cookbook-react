@@ -19,6 +19,9 @@ const Footer = () => (
 					<img src={LinkedInLogo} alt="linked-in-logo" className="footer-logo mt-3 mb-3 ml-3"/>
 				</a>
 				</div>
+				<div className="row justify-content-center footer-copyright copyright-div">
+					<p>Copyright 2019 James McAuliffe</p>
+				</div>
 			</div>
 		</footer>	
 	</div>
