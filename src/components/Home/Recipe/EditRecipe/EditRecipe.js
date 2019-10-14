@@ -102,7 +102,7 @@ const EditRecipe = (props) => {
 							/>
 						<Instructions onChange={onChange} value={recipeDetails.directions}/>
 						<button type="submit" className="btn btn-success mt-2 mr-1 mb-2">Save</button>
-						<button className="btn btn-warning mt-2 ml-1 mb-2" onClick={cancelEdit}>Cancel</button>
+						<button type="button" className="btn btn-warning mt-2 ml-1 mb-2" onClick={cancelEdit}>Cancel</button>
 					</div>
 				</form>
 			</div>

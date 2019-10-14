@@ -5,6 +5,7 @@ import { withAuthorization } from '../../../Session/index';
 import './RecipeDetail.css';
 import { HOME } from '../../../../constants/routes';
 import ConfirmDelete from './ConfirmDelete/ConfirmDelete';
+import DefaultImage from '../../../../images/food_default_2.gif';
 
 const RecipeDetail = (props) => {
 
@@ -17,9 +18,12 @@ const RecipeDetail = (props) => {
 		ingredients: []
 	}
 	const editRecipePath = `${props.history.location.pathname}/edit`;
+	const emptyIngredients = <h4 className="handwriting">Edit to add ingredients</h4>;
+	const emptyDirections = <h4 className="handwriting">Edit to add directions</h4>;
 
 	//object containing the info to be rendered
 	const [recipeDetails, setRecipeDetails] = useState(initialState);
+	const [mappedIngredients, setMappedIngredients] = useState([]);
 	const [renderedDirections, setRenderedDirections] = useState('');
 	const [showDelete, setShowDelete] = useState(false);
 
@@ -42,6 +46,28 @@ const RecipeDetail = (props) => {
 	let toggleShowDelete = () => {
 		setShowDelete(!showDelete);
 	}
+
+	let addDefaultImage = (e) => {
+		e.target.src = DefaultImage;
+	}
+
+	useEffect(() => {
+		let mapIngredients = recipeDetails.ingredients.filter(ing => {
+			//filters out any ingredients with empty name values
+			return ing.name.trim('') !== '';
+		})
+		.map((ing, i) => {
+			let amountCondition = ing.amount.trim('') === '' ? null : ` - ${ing.amount}`;
+
+			return (
+				<div key={i}>
+					<h4 className="handwriting">{ing.name}{amountCondition}</h4>
+				</div>
+			);
+		});
+
+		setMappedIngredients(mapIngredients);
+	}, [recipeDetails.ingredients]);
 
 	useEffect(() => {
 		props.firebase.getRecipe(recipeID, uID)
@@ -79,22 +105,17 @@ const RecipeDetail = (props) => {
 			<div className="mb-5 recipe-detail-div rounded border border-dark recipeBackground">
 				<h2 className="title handwriting mt-4 mb-5">{recipeDetails.title}</h2>
 				<div>
-					<img  
+					<img 
+						onError={addDefaultImage} 
 						src={recipeDetails.image} 
 						alt={recipeDetails.title}
 						className="rounded recipeImage mb-5 img-fluid img-responsive"/>	
 				</div>
 				<h3><u>Ingredients</u></h3>
-				{recipeDetails.ingredients.map((ing, i) => {
-					return (
-						<div key={i}>
-							<h4 className="handwriting">{ing.name} - {ing.amount}</h4>
-						</div>
-					);
-				})}
+				{mappedIngredients.length === 0 ? emptyIngredients : mappedIngredients}
 				<h3 className="mt-4"><u>Directions</u></h3>
 				<ul className="directions-list mr-auto">
-					{renderedDirections}
+					{recipeDetails.directions.trim('') === '' ? emptyDirections : renderedDirections}
 				</ul>	
 				<div className="mb-5">
 					<Link to={editRecipePath}>
