@@ -3,6 +3,11 @@
 	margin-bottom: 70px;
 }
 
+.loader {
+	margin: auto;
+	top: 50;
+}
+
 @media (max-width: 575px) {
    .cards-row {
    		justify-content: center;
