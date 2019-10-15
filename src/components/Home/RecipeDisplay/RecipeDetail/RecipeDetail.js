@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 
 import { withAuthorization } from '../../../Session/index';
 import './RecipeDetail.css';
@@ -26,6 +27,7 @@ const RecipeDetail = (props) => {
 	const [mappedIngredients, setMappedIngredients] = useState([]);
 	const [renderedDirections, setRenderedDirections] = useState('');
 	const [showDelete, setShowDelete] = useState(false);
+	const [dataFetched, setDataFetched] = useState(false);
 
 	const onBackClick = () => {
 		props.history.push(HOME);
@@ -73,6 +75,7 @@ const RecipeDetail = (props) => {
 		props.firebase.getRecipe(recipeID, uID)
 			.then(snapshot => {
 				setRecipeDetails(snapshot.data());
+				setDataFetched(true);
 			})
 			.catch(err => {
 				return err
@@ -99,31 +102,42 @@ const RecipeDetail = (props) => {
 	},[recipeDetails]);
 
 	return (
-		<div className={showDelete ? "showDeleteStyling" : null}>
-			{showDelete ? <ConfirmDelete toggle={toggleShowDelete} deleteRecipe={onDeleteRecipe}/> : null}
-			<button type="button" onClick={onBackClick} className="btn btn-success mb-4 mt-4 mr-auto border-dark">Back to Recipes</button>
-			<div className="mb-5 recipe-detail-div rounded border border-dark recipeBackground">
-				<h2 className="title handwriting mt-4 mb-5">{recipeDetails.title}</h2>
-				<div>
-					<img 
-						onError={addDefaultImage} 
-						src={recipeDetails.image} 
-						alt={recipeDetails.title}
-						className="rounded recipeImage mb-5 img-fluid img-responsive"/>	
+		<div>
+			{!dataFetched ? 
+			<div className="d-flex justify-content-center recipe-detail-loader">
+				<ReactLoading 
+					type={"spinningBubbles"} 
+					color={"#055227"} 
+					height={"150px"} 
+					width={"150px"}
+					className="recipe-detail-loader"/>
+			</div> :
+			<div className={showDelete ? "showDeleteStyling" : null}>
+				{showDelete ? <ConfirmDelete toggle={toggleShowDelete} deleteRecipe={onDeleteRecipe}/> : null}
+				<button type="button" onClick={onBackClick} className="btn btn-success mb-4 mt-4 mr-auto border-dark">Back to Recipes</button>
+				<div className="mb-5 recipe-detail-div rounded border border-dark recipeBackground">
+					<h2 className="title handwriting mt-4 mb-5">{recipeDetails.title}</h2>
+					<div>
+						<img 
+							onError={addDefaultImage} 
+							src={recipeDetails.image} 
+							alt={recipeDetails.title}
+							className="rounded recipeImage mb-5 img-fluid img-responsive"/>	
+					</div>
+					<h3><u>Ingredients</u></h3>
+					{mappedIngredients.length === 0 ? emptyIngredients : mappedIngredients}
+					<h3 className="mt-4"><u>Directions</u></h3>
+					<ul className="directions-list mr-auto">
+						{recipeDetails.directions.trim('') === '' ? emptyDirections : renderedDirections}
+					</ul>	
+					<div className="mb-5">
+						<Link to={editRecipePath}>
+							<button className="btn btn-primary m-4 border-dark">Edit</button>
+						</Link>
+						<button className="btn btn-danger ml-4 border-dark" onClick={toggleShowDelete}>Delete</button>
+					</div>
 				</div>
-				<h3><u>Ingredients</u></h3>
-				{mappedIngredients.length === 0 ? emptyIngredients : mappedIngredients}
-				<h3 className="mt-4"><u>Directions</u></h3>
-				<ul className="directions-list mr-auto">
-					{recipeDetails.directions.trim('') === '' ? emptyDirections : renderedDirections}
-				</ul>	
-				<div className="mb-5">
-					<Link to={editRecipePath}>
-						<button className="btn btn-primary m-4 border-dark">Edit</button>
-					</Link>
-					<button className="btn btn-danger ml-4 border-dark" onClick={toggleShowDelete}>Delete</button>
-				</div>
-			</div>
+			</div>}
 		</div>
 	);
 }

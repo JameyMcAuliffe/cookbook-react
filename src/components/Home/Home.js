@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import ReactLoading from 'react-loading';
 
 import { withAuthorization } from '../Session/index';
 import RecipeListing from './RecipeDisplay/RecipeListing/RecipeListing';
@@ -11,6 +12,7 @@ const Home = (props) => {
 	const [recipesArray, setRecipesArray] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [renderedRecipes, setRenderedRecipes] = useState([]);
+	const [dataFetched, setDataFetched] = useState(false);
 
 	useEffect(() => {
 		//temporary array to hold returned data from fb
@@ -27,6 +29,7 @@ const Home = (props) => {
 		})
 		.then(() => {
 			setRecipesArray(snapshotArray);
+			setDataFetched(true);
 		})
 		.catch(err => {
 			return err;
@@ -53,10 +56,17 @@ const Home = (props) => {
 	return (
 		<div className="container-fluid home-div">
 			<Search onChange={onSearchUpdate} value={searchTerm}/>
+			{!dataFetched ? 
+			<ReactLoading 
+				type={"spinningBubbles"} 
+				color={"#055227"} 
+				height={"150px"} 
+				width={"150px"}
+				className="loader"/> :
 			<div className="row cards-row">
 				{searchTerm.trim('') === '' ? <AddNewRecipeListing /> : null}
 				{renderedRecipes}	
-			</div>
+			</div>}
 		</div>
 	);
 }
