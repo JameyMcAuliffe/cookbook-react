@@ -14,6 +14,7 @@ import Home from './components/Home/Home';
 import NewRecipe from './components/Home/Recipe/NewRecipe/NewRecipe';
 import EditRecipe from './components/Home/Recipe/EditRecipe/EditRecipe';
 import RecipeDetail from './components/Home/RecipeDisplay/RecipeDetail/RecipeDetail';
+import ScrollToTop from './components/Scroll/ScrollToTop';
 
 
 const App = (props) => { 
@@ -30,6 +31,7 @@ const App = (props) => {
   return (
     <AuthUserContext.Provider value={authUserState}>
       <Router>
+        <ScrollToTop>
         <div className="App">
           <Navigation/>
           <Route exact path={ROUTES.SIGN_UP} component={SignUp}/>
@@ -40,6 +42,7 @@ const App = (props) => {
           <Route exact path={ROUTES.EDIT} component={EditRecipe}/>
           <Footer/>
         </div>
+        </ScrollToTop>
       </Router>
     </AuthUserContext.Provider>
   );
