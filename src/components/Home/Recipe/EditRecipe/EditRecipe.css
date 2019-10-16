@@ -10,6 +10,11 @@
 	margin: auto;
 }
 
+.edit-detail-loader {
+   margin-top: 8%;
+   margin-bottom: 10%;
+}
+
 @media (max-width: 1200px) {
    .edit-main-div {
    		width: 60%;
@@ -17,6 +22,17 @@
 
    .edit-input {
    		width: 80%;
+   }
+
+   .edit-detail-loader {
+         margin-top: 9%;
+         margin-bottom: 10%;
+      }
+}
+
+@media (max-width: 1000px) {
+   .edit-detail-loader {
+      margin-bottom: 15%;
    }
 }
 
@@ -27,5 +43,24 @@
 
    .edit-input {
    		width: 90%;
+   }
+
+   .edit-detail-loader {
+         margin-top: 10%;
+         margin-bottom: 20%;
+   }
+}
+
+@media (max-width: 600px) {
+   .edit-detail-loader {
+      margin-top: 15%;
+      margin-bottom: 28%;
+   }
+}
+
+@media (max-width: 400px) {
+   .edit-detail-loader {
+      margin-top: 25%;
+      margin-bottom: 35%;
    }
 }

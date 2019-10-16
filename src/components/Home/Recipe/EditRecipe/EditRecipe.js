@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import ReactLoading from 'react-loading';
 
 import { withAuthorization } from '../../../Session/index';
 import Ingredients from '../NewRecipe/Ingredients/Ingredients';
@@ -22,11 +23,14 @@ const EditRecipe = (props) => {
 	}
 
 	const [recipeDetails, setRecipeDetails] = useState(initialState);
+	const [dataFetched, setDataFetched] = useState(false);
+
 
 	useEffect(() => {
 		props.firebase.getRecipe(recipeID, uID)
 			.then(snapshot => {
 				setRecipeDetails(snapshot.data());
+				setDataFetched(true);
 				return snapshot.data();
 			})
 			// eslint-disable-next-line
@@ -72,6 +76,16 @@ const EditRecipe = (props) => {
 
 
 	return(
+		<div>
+		{!dataFetched ? 
+			<div className="d-flex justify-content-center recipe-detail-loader">
+				<ReactLoading 
+					type={"spinningBubbles"} 
+					color={"#055227"} 
+					height={"150px"} 
+					width={"150px"}
+					className="edit-detail-loader"/>
+			</div> :
 		<div className="rounded mb-5 edit-main-div">
 			<h1 className="text-white mt-4">Edit Recipe</h1>
 			<div>
@@ -106,6 +120,7 @@ const EditRecipe = (props) => {
 					</div>
 				</form>
 			</div>
+		</div>}
 		</div>
 	);
 }
