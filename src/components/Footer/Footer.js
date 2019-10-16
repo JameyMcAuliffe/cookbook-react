@@ -20,7 +20,7 @@ const Footer = () => (
 				</a>
 				</div>
 				<div className="row justify-content-center footer-copyright copyright-div">
-					<p>Copyright 2019 James McAuliffe</p>
+					<p>Copyright 2019 <a href="https://jameymcauliffe.github.io/">Jamey McAuliffe</a></p>
 				</div>
 			</div>
 		</footer>	
