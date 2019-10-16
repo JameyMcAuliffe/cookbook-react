@@ -7,6 +7,7 @@ const Ingredients = ({ingredientsArray, addNewIngredient, onDelete, onChange}) =
 
 	const [ingredientInputsArray, setIngredientInputsArray] = useState([]);
 	
+	//Creating array of Ingredient components for rendering
 	useEffect(() => {
 		let mappedIngredientsArray = ingredientsArray.map((ing, i) => {
 			return <Ingredient

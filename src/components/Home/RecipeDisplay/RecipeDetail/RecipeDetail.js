@@ -53,12 +53,14 @@ const RecipeDetail = (props) => {
 		e.target.src = DefaultImage;
 	}
 
+	//Creates elements for rendering ingredient info
 	useEffect(() => {
 		let mapIngredients = recipeDetails.ingredients.filter(ing => {
 			//filters out any ingredients with empty name values
 			return ing.name.trim('') !== '';
 		})
 		.map((ing, i) => {
+			//if amount is empty no dash renders after ingredient
 			let amountCondition = ing.amount.trim('') === '' ? null : ` - ${ing.amount}`;
 
 			return (
@@ -71,6 +73,7 @@ const RecipeDetail = (props) => {
 		setMappedIngredients(mapIngredients);
 	}, [recipeDetails.ingredients]);
 
+	//Fetching recipe data
 	useEffect(() => {
 		props.firebase.getRecipe(recipeID, uID)
 			.then(snapshot => {
