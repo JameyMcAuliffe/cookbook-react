@@ -6,6 +6,7 @@ import AuthUserContext from './context';
 import { withFirebase } from '../Firebase/index';
 import * as ROUTES from '../../constants/routes';
 
+//custom component protecting routes from non authorized users
 const withAuthorization = condition => Component => {
 	const WithAuthorization = (props) => {
 

@@ -18,10 +18,10 @@ const Home = (props) => {
 		//temporary array to hold returned data from fb
 		let snapshotArray = [];
 
-		//add fb created id to each recipe obj
 		props.firebase.getRecipes(uid)
 		.then(snapshot => {
 			snapshot.docs.forEach(doc => {
+				//add fb created id to each recipe obj
 				let recipeID = doc.id;
 				let recipeObj = {...doc.data(), recipeID};
 				snapshotArray.push(recipeObj);
@@ -46,7 +46,7 @@ const Home = (props) => {
 		let recipeComponents = recipesArray.filter((recipe) => {
 			return recipe.title.toLowerCase().trim('').includes(searchTerm.toLowerCase().trim(''));
 		})
-		.map((recipe, i) => {
+		.map((recipe) => {
 			return <RecipeListing image={recipe.image} title={recipe.title} key={recipe.recipeID} id={recipe.recipeID}/>
 		});
 

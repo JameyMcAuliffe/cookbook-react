@@ -69,6 +69,7 @@ const NewRecipe = (props) => {
 		props.history.push('/');
 	}
 
+	//Recipe must have a title
 	let disabledCheck = newRecipeObj.title.trim('') === '' ? true : false;
 
 	return (

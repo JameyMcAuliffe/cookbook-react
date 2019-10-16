@@ -32,16 +32,16 @@ const App = (props) => {
     <AuthUserContext.Provider value={authUserState}>
       <Router>
         <ScrollToTop>
-        <div className="App">
-          <Navigation/>
-          <Route exact path={ROUTES.SIGN_UP} component={SignUp}/>
-          <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
-          <Route exact path={ROUTES.HOME} component={Home}/>
-          <Route exact path={ROUTES.NEW_RECIPE} component={NewRecipe}/>
-          <Route exact path={ROUTES.RECIPE} component={RecipeDetail}/>
-          <Route exact path={ROUTES.EDIT} component={EditRecipe}/>
-          <Footer/>
-        </div>
+          <div className="App">
+            <Navigation/>
+            <Route exact path={ROUTES.SIGN_UP} component={SignUp}/>
+            <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
+            <Route exact path={ROUTES.HOME} component={Home}/>
+            <Route exact path={ROUTES.NEW_RECIPE} component={NewRecipe}/>
+            <Route exact path={ROUTES.RECIPE} component={RecipeDetail}/>
+            <Route exact path={ROUTES.EDIT} component={EditRecipe}/>
+            <Footer/>
+          </div>
         </ScrollToTop>
       </Router>
     </AuthUserContext.Provider>

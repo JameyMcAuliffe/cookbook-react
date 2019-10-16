@@ -78,53 +78,53 @@ const EditRecipe = (props) => {
 
 	return(
 		<div>
-		{!dataFetched ? 
-			<div className="d-flex justify-content-center recipe-detail-loader">
-				<ReactLoading 
-					type={"spinningBubbles"} 
-					color={"#055227"} 
-					height={"150px"} 
-					width={"150px"}
-					className="edit-detail-loader"/>
-			</div> :
-		<div className="rounded mb-5 edit-main-div">
-			<h1 className="text-white mt-4">Edit Recipe</h1>
-			<div>
-				<form className="container"onSubmit={saveRecipe}>
-					<div className="form-group mt-4">
-						<h5 htmlFor="title" className="text-white">Name:</h5>
-						<input
-							onChange={onChange}
-							value={recipeDetails.title} 
-							type="text" 
-							name="title" 
-							className="form-control edit-input bg-dark text-white"
-							placeholder="Enter the recipe name..."/>
-						<h5 htmlFor="image" className="mt-4 text-white">Image</h5>
-						<input
-							onChange={onChange}
-							value={recipeDetails.image} 
-							type="text"
-							name="image"
-							className="form-control edit-input bg-dark text-white"
-							placeholder="Enter an image url..."
-							/>
-						<Ingredients 
-							onChange={onIngredientChange} 
-							addNewIngredient={addNewIngredient}
-							ingredientsArray={recipeDetails.ingredients}
-							onDelete={onDeleteIngredient}
-							/>
-						<Instructions onChange={onChange} value={recipeDetails.directions}/>
-						<button 
-							type="submit" 
-							className="btn btn-success mt-2 mr-1 mb-2" 
-							disabled={disabledCheck}>Save</button>
-						<button type="button" className="btn btn-warning mt-2 ml-1 mb-2" onClick={cancelEdit}>Cancel</button>
-					</div>
-				</form>
-			</div>
-		</div>}
+			{!dataFetched ? 
+				<div className="d-flex justify-content-center recipe-detail-loader">
+					<ReactLoading 
+						type={"spinningBubbles"} 
+						color={"#055227"} 
+						height={"150px"} 
+						width={"150px"}
+						className="edit-detail-loader"/>
+				</div> :
+			<div className="rounded mb-5 edit-main-div">
+				<h1 className="text-white mt-4">Edit Recipe</h1>
+				<div>
+					<form className="container"onSubmit={saveRecipe}>
+						<div className="form-group mt-4">
+							<h5 htmlFor="title" className="text-white">Name:</h5>
+							<input
+								onChange={onChange}
+								value={recipeDetails.title} 
+								type="text" 
+								name="title" 
+								className="form-control edit-input bg-dark text-white"
+								placeholder="Enter the recipe name..."/>
+							<h5 htmlFor="image" className="mt-4 text-white">Image</h5>
+							<input
+								onChange={onChange}
+								value={recipeDetails.image} 
+								type="text"
+								name="image"
+								className="form-control edit-input bg-dark text-white"
+								placeholder="Enter an image url..."
+								/>
+							<Ingredients 
+								onChange={onIngredientChange} 
+								addNewIngredient={addNewIngredient}
+								ingredientsArray={recipeDetails.ingredients}
+								onDelete={onDeleteIngredient}
+								/>
+							<Instructions onChange={onChange} value={recipeDetails.directions}/>
+							<button 
+								type="submit" 
+								className="btn btn-success mt-2 mr-1 mb-2" 
+								disabled={disabledCheck}>Save</button>
+							<button type="button" className="btn btn-warning mt-2 ml-1 mb-2" onClick={cancelEdit}>Cancel</button>
+						</div>
+					</form>
+				</div>
+			</div>}
 		</div>
 	);
 }
