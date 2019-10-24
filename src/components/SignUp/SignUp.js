@@ -89,7 +89,7 @@ const SignUpFormBase = (props) => {
 					name="passwordOne"
 					value={passwordOne}
 					onChange={onChange}
-					type="text"
+					type="password"
 					placeholder="Create a password at least 6 characters long"
 				/>
 				<input
@@ -97,7 +97,7 @@ const SignUpFormBase = (props) => {
 					name="passwordTwo"
 					value={passwordTwo}
 					onChange={onChange}
-					type="text"
+					type="password"
 					placeholder="Confirm password"
 				/>
 				<button disabled={isInvalid} type="submit" className="btn btn-primary">Create Account</button>

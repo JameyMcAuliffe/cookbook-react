@@ -69,7 +69,7 @@ const SignInFormBase = (props) => {
 				name="password"
 				value={password}
 				onChange={onChange}
-				type="text"
+				type="password"
 				placeholder="Enter your password..."
 			/>
 			<button disabled={isInvalid} type="submit" className="btn btn-primary">Sign In</button>
