@@ -1,6 +1,8 @@
 # Cookbook
 React CRUD app where users can store and easily retrieve their favorite recipes without the bells and whistles
 
+**Deployed:** [Cookbook](https://cookbook-react-62ffa.firebaseapp.com/)
+
 <img src="./src/images/cookbook_ss.png" alt="Sign In Screenshot"/>
 
 ## Demo
