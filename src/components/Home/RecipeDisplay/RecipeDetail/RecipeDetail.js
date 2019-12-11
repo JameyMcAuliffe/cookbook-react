@@ -95,7 +95,7 @@ const RecipeDetail = (props) => {
 			})
 			.map((dir, i) => {
 				return (
-					<li key={i}>
+					<li key={i} className="ml-2 mr-2">
 						<h4 className="handwriting">{i+1}) {dir}</h4>
 					</li>
 				);
